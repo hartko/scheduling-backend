@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Services;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\Schedule;
 
@@ -19,19 +20,19 @@ class ScheduleService
             ->orderByRaw('FIELD(day, "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")')
             ->orderByRaw("STR_TO_DATE(startTime, '%h:%i %p')")
             ->get()
-            ->groupBy('day')
+            // ->groupBy('day')
             ->makeHidden(['id', 'created_at', 'updated_at']);
 
         return $schedules;
     }
 
-    public function show($day)
+    public function get($day)
     {
         // Retrieve and return all schedules
-        $schedule = Schedule::where('day', 'like', '%' . $day . '%')
+        $schedule = Schedule::where('day','Monday')
             ->orderByRaw("STR_TO_DATE(startTime, '%h:%i %p')")
             ->get()
-            ->makeHidden(['id', 'created_at', 'updated_at']);
+            ->makeHidden(['day','id', 'created_at', 'updated_at']);
 
         return $schedule;
     }
@@ -44,7 +45,6 @@ class ScheduleService
      */
     public function massCreate($request)
     {
-        var_dump($request->input('schedules'));
         // Parse the input JSON string into an array of schedule objects
         $schedules = json_decode($request->input('schedules'));
         // Iterate over each schedule object and create a new schedule record

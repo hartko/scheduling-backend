@@ -3,21 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Services\ScheduleService;
 use Illuminate\Support\Facades\Log;
 
-class ScheduleController extends Controller
-{
-   
-    protected $scheduleService;
+use App\Http\Requests\CreateSectionRequest;
 
-    public function __construct(ScheduleService $scheduleService)
+use App\Http\Services\sectionService;
+
+class SectionController extends Controller
+{
+
+    protected $sectionService;
+
+    public function __construct(sectionService $sectionService)
     {
-        $this->scheduleService = $scheduleService;
+        $this->sectionService = $sectionService;
     }
 
     /**
-     * Endpoint to fetch a list of schedule.
+     * Endpoint to fetch a list of sections.
      * 
      * @return \Illuminate\Http\JsonResponse
      */
@@ -25,11 +28,11 @@ class ScheduleController extends Controller
     {
         try {
 
-            $schedule = $this->scheduleService->list($request->input('search'));
+            $sections = $this->sectionService->list($request->input('search'));
 
             return response()->json([
                 'result' => 'success',
-                'data' => $schedule
+                'data' => $sections
             ], 200);
         } catch (\Exception $error) {
             return response()->json([
@@ -39,7 +42,31 @@ class ScheduleController extends Controller
         }
     }
     /**
-     * Endpoint to create multiple schedule.
+     * Endpoint to store a single Section.
+     * 
+     * @param  \App\Http\Requests\CreateSectionRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(CreateSectionRequest $request)
+    {
+        try {
+            $saveSection = $this->sectionService->store($request);
+
+            return response()->json([
+                'result' => 'successful',
+                'data' => $saveSection,
+                'message' => 'Succesfully created a Section!'
+
+            ], 200);
+        } catch (\Exception $error) {
+            return response()->json([
+                'result' => 'failed',
+                'error' => $error->getMessage()
+            ], 400);
+        }
+    }
+    /**
+     * Endpoint to create multiple sections.
      * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
@@ -47,51 +74,36 @@ class ScheduleController extends Controller
     public function massCreate(Request $request)
     {
         try {
-            $saveRooms = $this->scheduleService->massCreate($request);
-            return response()->json([
-                'result' => 'successful',
-                'data' => $saveRooms,
-                'message' => 'Succesfully created schedule!'
-
-            ], 200);
-        } catch (\Exception $error) {
-            return response()->json([
-                'result' => 'failed',
-                'error' => $error->getMessage()
-            ], 400);
-        }
-
-    }
-
-    public function update($request, $id)
-    {
-        try {
-            $updateRoom = $this->scheduleService->update($request);
+            $savesections = $this->sectionService->massCreate($request);
 
             return response()->json([
                 'result' => 'successful',
-                'data' => $updateRoom,
-                'message' => 'Succesfully updated schedule!'
+                'data' => $savesections,
+                'message' => 'Succesfully created sections!'
 
             ], 200);
-
-
         } catch (\Exception $error) {
             return response()->json([
                 'result' => 'failed',
                 'error' => $error->getMessage()
             ], 400);
         }
+
     }
 
-    public function show(Request $request, $day)
+    public function update(CreateSectionRequest $request, $id)
     {
         try {
-            $schedule = $this->scheduleService->get($request->input('search'));
+            $updateSection = $this->sectionService->update($request);
+
             return response()->json([
-                'result' => 'success',
-                'data' => $schedule
+                'result' => 'successful',
+                'data' => $updateSection,
+                'message' => 'Succesfully updated Section!'
+
             ], 200);
+
+
         } catch (\Exception $error) {
             return response()->json([
                 'result' => 'failed',
@@ -99,4 +111,5 @@ class ScheduleController extends Controller
             ], 400);
         }
     }
+
 }

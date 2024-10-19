@@ -32,6 +32,7 @@ class ExcelController extends Controller
             });
             $arrayWithoutNull = [];
             $arraysWithNull = [];
+
             // Use array_filter to iterate through each row and filter out rows with null values
             array_filter($rows, function ($value) use (&$arrayWithoutNull,&$arrayKeys, &$arraysWithNull) {
                 if(count($value) !== count($arrayKeys) ){

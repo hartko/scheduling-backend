@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Schedule extends Model
+class RoomSchedule extends Model
 {
     use HasFactory;
-
-    protected $fillable = ["day", "startTime", "endTime","hasBreakTime", "bktStartTime", "bktEndTime"];
+    protected $fillable = ["roomId", "sectionId", "subjectId","startTime","endTime","teacherId", "day"];
 
 }

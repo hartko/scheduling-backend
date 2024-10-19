@@ -7,6 +7,10 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SchedulingController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,3 +41,18 @@ Route::put('/teachers/{id}', [TeacherController::class, 'update']);
 Route::post('/schedule', [ScheduleController::class, 'massCreate']);
 Route::get('/schedules', [ScheduleController::class, 'index']);
 Route::put('/schedules/{id}', [ScheduleController::class, 'update']);
+Route::get('/schedule/{day}', [ScheduleController::class, 'show']);
+
+Route::post('/course', [CourseController::class, 'massCreate']);
+Route::get('/courses', [CourseController::class, 'index']);
+Route::put('/courses/{id}', [CourseController::class, 'update']);
+
+Route::post('/subject', [SubjectController::class, 'massCreate']);
+Route::get('/subjects', [SubjectController::class, 'index']);
+Route::put('/subjects/{id}', [SubjectController::class, 'update']);
+
+Route::post('/classSection', [SectionController::class, 'massCreate']);
+Route::get('/classSections', [SectionController::class, 'index']);
+Route::put('/classSection/{id}', [SectionController::class, 'update']);
+
+Route::get('/scheduling', [SchedulingController::class, 'index']);

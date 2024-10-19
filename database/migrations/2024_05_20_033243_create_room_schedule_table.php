@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('room_schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('day');
+            $table->string('roomId');
+            $table->string('sectionId');
+            $table->string('subjectId')->nullable();
             $table->string('startTime');
             $table->string('endTime');
-            $table->string('hasBreakTime');
-            $table->string('bktStartTime');
-            $table->string('bktEndTime');
+            $table->string('teacherId')->nullable();
+            $table->string('day');
+            $table->smallInteger('unit')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('room_schedules');
     }
 };

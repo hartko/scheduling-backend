@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('teacher_schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('day');
+            $table->string('teacherId');
             $table->string('startTime');
             $table->string('endTime');
-            $table->string('hasBreakTime');
-            $table->string('bktStartTime');
-            $table->string('bktEndTime');
+            $table->string('hasBreak')->default('true');
+            $table->string('brkStartTime')->default('12:00 PM');
+            $table->string('brkEndTime')->default('1:00 PM');
+            $table->json('day');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('teacher_schedules');
     }
 };

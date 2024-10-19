@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\TeacherService;
-
+use Illuminate\Support\Facades\Log;
 class TeacherController extends Controller
 {
    
@@ -24,11 +24,14 @@ class TeacherController extends Controller
     {
         try {
 
-            $teacher = $this->teacherService->list($request->input('search'));
-
+            $teachers = $this->teacherService->list($request->input('search'));
             return response()->json([
                 'result' => 'success',
-                'data' => $teacher
+                'teachers' => $teachers->getCollection()->makeHidden(['id','departmentId', 'created_at', 'updated_at']),
+                'pagination' => [
+                    "nextPageUrl"=>$teachers->nextPageUrl(),
+                    "previousPageUrl" => $teachers->previousPageUrl(),
+                ]
             ], 200);
         } catch (\Exception $error) {
             return response()->json([

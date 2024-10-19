@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('roomId')->unique();
             $table->string('name');
-             $table->string('capacity');
+             $table->string('capacity');  
             $table->string('floor');
             $table->string('building');
             $table->timestamps();

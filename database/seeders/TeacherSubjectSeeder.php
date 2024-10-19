@@ -1,0 +1,115 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class TeacherSubjectSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $teacherSubjects = [
+            ['teacherId' => 'TC110', 'subjectId' => 'AL1'],
+            ['teacherId' => 'TC110', 'subjectId' => 'BACC1'],
+            ['teacherId' => 'TC110', 'subjectId' => 'BACC1'],
+            ['teacherId' => 'TC110', 'subjectId' => 'BACC3'],
+            ['teacherId' => 'TC110', 'subjectId' => 'BACC4'],
+            ['teacherId' => 'TC110', 'subjectId' => 'BACC6'],
+            ['teacherId' => 'TC111', 'subjectId' => 'BACC8'],
+            ['teacherId' => 'TC111', 'subjectId' => 'BAElect1'],
+            ['teacherId' => 'TC111', 'subjectId' => 'BAElect2'],
+            ['teacherId' => 'TC111', 'subjectId' => 'BAElect3'],
+            ['teacherId' => 'TC111', 'subjectId' => 'CBMEC1'],
+            ['teacherId' => 'TC111', 'subjectId' => 'EL100'],
+            ['teacherId' => 'TC111', 'subjectId' => 'EL101'],
+            ['teacherId' => 'TC112', 'subjectId' => 'EL102'],
+            ['teacherId' => 'TC112', 'subjectId' => 'EL106'],
+            ['teacherId' => 'TC112', 'subjectId' => 'EL107'],
+            ['teacherId' => 'TC112', 'subjectId' => 'EL108'],
+            ['teacherId' => 'TC112', 'subjectId' => 'EL109'],
+            ['teacherId' => 'TC112', 'subjectId' => 'EL114'],
+            ['teacherId' => 'TC113', 'subjectId' => 'EL115'],
+            ['teacherId' => 'TC113', 'subjectId' => 'EL116'],
+            ['teacherId' => 'TC113', 'subjectId' => 'EL117'],
+            ['teacherId' => 'TC113', 'subjectId' => 'ELECENG'],
+            ['teacherId' => 'TC113', 'subjectId' => 'ELECTIVE1'],
+            ['teacherId' => 'TC113', 'subjectId' => 'FIL101'],
+            ['teacherId' => 'TC114', 'subjectId' => 'FIL102'],
+            ['teacherId' => 'TC114', 'subjectId' => 'FIL103'],
+            ['teacherId' => 'TC114', 'subjectId' => 'FIL107'],
+            ['teacherId' => 'TC114', 'subjectId' => 'FIL108'],
+            ['teacherId' => 'TC114', 'subjectId' => 'FIL109'],
+            ['teacherId' => 'TC114', 'subjectId' => 'FIL110'],
+            ['teacherId' => 'TC115', 'subjectId' => 'FLCL'],
+            ['teacherId' => 'TC115', 'subjectId' => 'FLCT'],
+            ['teacherId' => 'TC115', 'subjectId' => 'FMElect2'],
+            ['teacherId' => 'TC115', 'subjectId' => 'FMElect3'],
+            ['teacherId' => 'TC115', 'subjectId' => 'FMElect4'],
+            ['teacherId' => 'TC115', 'subjectId' => 'FMElect5'],
+            ['teacherId' => 'TC116', 'subjectId' => 'FMProf4'],
+            ['teacherId' => 'TC116', 'subjectId' => 'FMProf5'],
+            ['teacherId' => 'TC116', 'subjectId' => 'FMProf6'],
+            ['teacherId' => 'TC116', 'subjectId' => 'FMProf8'],
+            ['teacherId' => 'TC116', 'subjectId' => 'GE1'],
+            ['teacherId' => 'TC116', 'subjectId' => 'GE2'],
+            ['teacherId' => 'TC117', 'subjectId' => 'GE3'],
+            ['teacherId' => 'TC117', 'subjectId' => 'GE4'],
+            ['teacherId' => 'TC117', 'subjectId' => 'GE7'],
+            ['teacherId' => 'TC117', 'subjectId' => 'GE8'],
+            ['teacherId' => 'TC117', 'subjectId' => 'GE9'],
+            ['teacherId' => 'TC117', 'subjectId' => 'GE10'],
+            ['teacherId' => 'TC118', 'subjectId' => 'GEElect2'],
+            ['teacherId' => 'TC118', 'subjectId' => 'GEElect3'],
+            ['teacherId' => 'TC118', 'subjectId' => 'IMLIT102'],
+            ['teacherId' => 'TC118', 'subjectId' => 'LIT103'],
+            ['teacherId' => 'TC118', 'subjectId' => 'LIT104'],
+            ['teacherId' => 'TC118', 'subjectId' => 'LIT105'],
+            ['teacherId' => 'TC119', 'subjectId' => 'M100'],
+            ['teacherId' => 'TC119', 'subjectId' => 'M101'],
+            ['teacherId' => 'TC119', 'subjectId' => 'M102'],
+            ['teacherId' => 'TC119', 'subjectId' => 'M106'],
+            ['teacherId' => 'TC119', 'subjectId' => 'M108'],
+            ['teacherId' => 'TC119', 'subjectId' => 'M109'],
+            ['teacherId' => 'TC120', 'subjectId' => 'M110'],
+            ['teacherId' => 'TC120', 'subjectId' => 'M113'],
+            ['teacherId' => 'TC120', 'subjectId' => 'M115'],
+            ['teacherId' => 'TC120', 'subjectId' => 'M116'],
+            ['teacherId' => 'TC120', 'subjectId' => 'MMElect1'],
+            ['teacherId' => 'TC120', 'subjectId' => 'MMElect4'],
+            ['teacherId' => 'TC121', 'subjectId' => 'MMElect5'],
+            ['teacherId' => 'TC121', 'subjectId' => 'MMElect6'],
+            ['teacherId' => 'TC121', 'subjectId' => 'MMProf1'],
+            ['teacherId' => 'TC121', 'subjectId' => 'MMProf4'],
+            ['teacherId' => 'TC121', 'subjectId' => 'MMProf5'],
+            ['teacherId' => 'TC121', 'subjectId' => 'MMProf7'],
+            ['teacherId' => 'TC122', 'subjectId' => 'MMProf8'],
+            ['teacherId' => 'TC122', 'subjectId' => 'NSTP1'],
+            ['teacherId' => 'TC122', 'subjectId' => 'PE1'],
+            ['teacherId' => 'TC122', 'subjectId' => 'PE3'],
+            ['teacherId' => 'TC122', 'subjectId' => 'PT1'],
+            ['teacherId' => 'TC122', 'subjectId' => 'SS101'],
+            ['teacherId' => 'TC123', 'subjectId' => 'SS102'],
+            ['teacherId' => 'TC123', 'subjectId' => 'SS103'],
+            ['teacherId' => 'TC123', 'subjectId' => 'SS107'],
+            ['teacherId' => 'TC123', 'subjectId' => 'SS108'],
+            ['teacherId' => 'TC123', 'subjectId' => 'SS109'],
+            ['teacherId' => 'TC123', 'subjectId' => 'SS110'],
+            ['teacherId' => 'TC124', 'subjectId' => 'SS115'],
+            ['teacherId' => 'TC124', 'subjectId' => 'SS116'],
+            ['teacherId' => 'TC124', 'subjectId' => 'SS117'],
+            ['teacherId' => 'TC124', 'subjectId' => 'SS118'],
+            ['teacherId' => 'TC124', 'subjectId' => 'TSCT'],
+            ['teacherId' => 'TC124', 'subjectId' => 'SDT'],
+            ['teacherId' => 'TC124', 'subjectId' => 'TTLT'],
+            ['teacherId' => 'TC124', 'subjectId' => 'TTL1'],
+        ];
+
+        DB::table('teacher_subjects')->insert($teacherSubjects);
+    }
+}

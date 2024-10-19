@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('courseId');
+            $table->string('courseId')->unique();
             $table->string('name');
-            $table->string('department');
-            $table->string('credits');
+            $table->string('department')->nullable();
             $table->timestamps();
         });
     }

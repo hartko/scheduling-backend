@@ -12,14 +12,14 @@ class TeacherService
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function list($search)
+    public function list($search, $limit = 10)
     {
         // Retrieve and return all teachers
         return Teacher::where('teacherId', 'like', '%' . $search . '%')
             ->orWhere('firstname', 'like', '%' . $search . '%')
             ->orWhere('middlename', 'like', '%' . $search . '%')
-            ->orWhere('lastname', 'like', '%' . $search . '%')->get()
-            ->makeHidden(['id','departmentId', 'created_at', 'updated_at']);
+            ->orWhere('lastname', 'like', '%' . $search . '%')
+            ->paginate($limit);
         ;
     }
     /**
@@ -30,7 +30,6 @@ class TeacherService
      */
     public function massCreate($request)
     {
-        var_dump($request->input('teachers'));
         // Parse the input JSON string into an array of teacher objects
         $teachers = json_decode($request->input('teachers'));
         // Iterate over each teacher object and create a new teacher record
